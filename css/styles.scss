@@ -1,0 +1,223 @@
+$bg-color-main: #0b0b2c;
+$borders: rgba(255, 255, 255, 0.6);
+$accent-color-1: rgb(221, 140, 34);
+$accent-color-1-contrast: #472101;
+$accent-color-2: #fffe00;
+$accent-color-2-contrast: #863e03;
+
+/**
+ Loading fonts from local folder provides better performance, avoids situations where a font link becomes obsolete, and limits data tracking. 
+*/
+@font-face {
+  font-family: "SourceSerif";
+  src: url("fonts/SourceSerifPro-Regular.ttf");
+}
+@font-face {
+  font-family: "Source Code Pro";
+  src: url("fonts/SourceCodePro-VariableFont_wght.ttf");
+}
+
+@font-face {
+    font-family: "test1";
+    src: url("fonts/Test3.ttf");
+  }
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  position: relative;
+  background-color: $bg-color-main;
+  //background: radial-gradient(#d008, #f5f54bc4 30%, #0606ff 100%);
+  background: url("bg/Poring\ Hot\ Spring\ 123.jpg");
+  background-size: 100% 100%;
+  backdrop-filter: 
+    saturate(200%) 
+    brightness(140%)
+    hue-r_otate(-40deg);
+  width: 100%;
+  height: 100vh;
+  padding: 0;
+  color: #fff;
+  font-family: "Source Code Pro", monospace;
+}
+.test{
+    font-family: test1;
+    font-style: normal !important;
+    font-size: 2rem;
+    margin:0.5rem;
+}
+main {
+  position: relative;
+  top: 70vh;
+  height: 30vh;
+  // border-top: 2px solid rgba(255, 0, 0, 0.247);
+  // background: linear-gradient(180deg, rgba(1, 1, 70, 0.95) 5%, rgba(78, 78, 163, 0.95) 15%, rgba(0, 0, 34, 0.95) 50%);
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.card {
+  position: relative;
+  top: -50vh;
+  height: 500px;
+  border-radius: 18px;
+  display: flex;
+  flex-direction: column;
+  border-top: 3px solid $borders;
+  border-left: 3px solid $borders;
+  box-shadow: 5px 5px 6px rgba(35, 35, 59, 0.5);
+  max-width: 320px;
+  margin: 2rem;
+  overflow: hidden;
+  cursor: pointer;
+  &:hover {
+    transform: scale(1.1);
+    transition: transform 700ms ease;
+  }
+  &:hover .filter{
+    opacity: 100%;
+    transition: backdrop-filter 500ms ease;
+  }
+  & .container > *:not(.title, .divider) {
+    opacity: 0;
+    transition: opacity 700ms ease;
+  }
+  &:hover .container > *:not(.title) {
+    opacity: 1;
+    transition: opacity 1200ms ease;
+    transition-delay: 500ms;
+  }
+  &:hover .container {
+    transform: translateY(-50px);
+    transition: transform 700ms ease;
+  }
+  &:hover .divider {
+    transform: scaleX(1.5) scaleY(1);
+    transform-origin: left;
+    transition: transform 700ms ease;
+    transition-delay: 500ms;
+  }
+  &:not(:hover) {
+    transform: scale(1);
+    transition: transform 700ms ease;
+  }
+  &:not(:hover) .container {
+    transform: translateY(220px);
+    transition: transform 700ms ease;
+  }
+  &:not(:hover) .divider* {
+    transform: scaleX(0.7) scaleY(2);
+    transform-origin: left;
+    transition: transform 700ms ease;
+  }
+}
+.web-dev {
+  background: url(bg/casey-lee-awj7sRviVXo-unsplash.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.desktop {
+  background: url(bg/clay-banks-b5S4FrJb7yQ-unsplash.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.filter {
+  width: 100%;
+  height: 120%;
+  background: linear-gradient(30deg, #3f2310 10%, transparent);
+  opacity: 60%;
+  border-radius: 18px;
+}
+.container {
+  position: relative;
+  top: 180px;
+  height: 400px;
+  width: 100%;
+  //background: #fff2;
+  //backdrop-filter: blur(1px);
+}
+.title {
+  position: relative;
+  
+  margin: 0;
+  padding: 5px 30px;
+  font-size: 1.8rem;
+  font-weight: 700;
+  font-family: SourceSerif, Courier, monospace;
+  span {
+    font-style: italic;
+  }
+}
+.divider {
+  position: relative;
+  // top: 190px;
+  left: 0px;
+  height: 0.4rem;
+  width: 50%;
+  border-radius: 0 1rem 1rem 0;
+  z-index: 3;
+}
+.accent-color-1 {
+  background: $accent-color-1;
+  color: $accent-color-1-contrast;
+
+  &.button:hover {
+    background: $accent-color-1-contrast;
+    border-top: 2px solid $accent-color-1;
+    border-left: 2px solid $accent-color-1;
+  
+    color: $accent-color-1;
+    path {
+      fill: $accent-color-1;
+    }
+  }
+}
+.accent-color-2 {
+  background: $accent-color-2;
+  color: $accent-color-2-contrast;
+
+  &.button:hover {
+    background: $accent-color-2-contrast;
+    border-top: 2px solid $accent-color-2;
+    border-left: 2px solid $accent-color-2;
+    color: $accent-color-2;
+  }
+}
+
+.content {
+  position: relative;
+  // top: 205px;
+  margin: 20px 30px;
+  font-size: 1.1rem;
+  width: 280px;
+  text-align: left;
+  height: 140px;
+  overflow: hidden;
+  p:first-of-type {
+    margin-bottom: 10px;
+  }
+}
+.button {
+  position: relative;
+  // top: 230px;
+  padding: 0.5rem 2rem;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  border-radius: 0.5rem;
+  width: 20ch;
+  margin: 2rem auto;
+  font-weight: 700;
+
+  &:hover,
+  &:focus {
+    cursor: pointer;
+  }
+}
